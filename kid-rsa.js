@@ -138,4 +138,7 @@ console.log(
     16
   )} ---decrypt---> ${decrypted.toString(16)}`
 );
+console.log(
+  `${m.toString(2)} -> ${encrypted.toString(2)} -> ${decrypted.toString(2)}`
+);
 console.log(`done!`);

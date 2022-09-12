@@ -20,29 +20,34 @@ def phi(n):
       count += 1
   return count
 
-# primes up to 10k for ease 
-primes = file = open("primes", "r").read().splitlines()
-p1 = int( random.choice(primes) )
-p2 = int( random.choice(primes) )
 
-# https://macs4200.org/chapters/11/3/rsa.html
-n = p1 * p2
-print(f"p1: {p1} p2: {p2} n: {n} ")
+def gen_keys():
+  # primes up to 10k for ease 
+  primes = file = open("primes", "r").read().splitlines()
+  p1 = int( random.choice(primes) )
+  p2 = int( random.choice(primes) )
 
-# compute phi(n)
-phi_n = phi(n)
-print(f"p1: {p1} p2: {p2} n: {n} phi_n: {phi_n}")
+  # https://macs4200.org/chapters/11/3/rsa.html
+  n = p1 * p2
+  print(f"p1: {p1} p2: {p2} n: {n} ")
 
-# choose any e such that e and phi(n) are relative prime
-found_e = False
-e = -1 
-while found_e == False:
-  ee = random.randint(2, phi_n)
-  if gcd(ee, phi_n) == 1:
-    found_e = True
-    e = ee
+  # compute phi(n)
+  phi_n = phi(n)
+  print(f"p1: {p1} p2: {p2} n: {n} phi_n: {phi_n}")
 
-print(f"p1: {p1} p2: {p2} n: {n} phi_n: {phi_n} e: {e}")
+  # choose any e such that e and phi(n) are relative prime
+  found_e = False
+  e = -1 
+  while found_e == False:
+    ee = random.randint(2, phi_n)
+    if gcd(ee, phi_n) == 1:
+      found_e = True
+      e = ee
 
-# msg = int(input("enter message: "))
-# print(f"encrypting {msg}")
+  print(f"p1: {p1} p2: {p2} n: {n} phi_n: {phi_n} e: {e}")
+
+  # msg = int(input("enter message: "))
+  # print(f"encrypting {msg}")
+
+
+gen_keys()
